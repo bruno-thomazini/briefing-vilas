@@ -51,7 +51,7 @@
     <div class="mb-8 text-center bg-white p-6 rounded-2xl border border-brand-gray/60 shadow-sm">
       <h2 class="font-sora font-bold text-xl text-brand-brown mb-2">Seja bem-vindo(a) ao studio! 💛</h2>
       <p class="text-sm text-brand-brown/80 leading-relaxed">
-        Vamos alinhar os primeiros passos para estruturar os seus conteúdos. Você nos passa os temas e visões do seu negócio, e a nossa equipa transforma tudo em estratégia e posts impecáveis!
+        Vamos alinhar os primeiros passos para estruturar os seus conteúdos. Você nos passa os temas e visões do seu negócio, e a nossa equipe transforma tudo em estratégia e posts impecáveis!
       </p>
     </div>
 
@@ -69,11 +69,23 @@
     <form id="briefingForm">
       <!-- ETAPA 1 -->
       <div id="step-1" class="step-content space-y-6">
-        <h3 class="font-sora font-bold text-lg text-brand-brown border-b border-brand-gray pb-2">1. Objetivo & Público</h3>
+        <h3 class="font-sora font-bold text-lg text-brand-brown border-b border-brand-gray pb-2">1. Identificação & Objetivos</h3>
         
+        <!-- Identificação do Cliente -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-brand-gray/30 p-4 rounded-xl border border-brand-gray/80">
+          <div>
+            <label class="block font-sora font-semibold text-xs mb-1 text-brand-brown">Seu Nome Completo *</label>
+            <input type="text" id="clientName" required class="w-full p-2.5 text-sm bg-white border border-brand-gray rounded-lg focus:ring-2 focus:ring-brand-sand focus:outline-none" placeholder="Ex: Maria Silva">
+          </div>
+          <div>
+            <label class="block font-sora font-semibold text-xs mb-1 text-brand-brown">Nome da Marca / Perfil *</label>
+            <input type="text" id="clientBrand" required class="w-full p-2.5 text-sm bg-white border border-brand-gray rounded-lg focus:ring-2 focus:ring-brand-sand focus:outline-none" placeholder="Ex: @suamarca ou Empresa X">
+          </div>
+        </div>
+
         <div>
           <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
-            1. Qual é o principal objetivo que você gostaria de alcançar com o seu conteúdo nas redes sociais neste momento?
+            1. Qual é o principal objetivo que você gostaria de alcançar com o seu conteúdo nas redes sociais neste momento? *
           </label>
           <span class="block text-xs text-brand-brown/60 mb-2">Ex.: atrair novos clientes, fortalecer a marca, apresentar um serviço, gerar mais autoridade, aumentar o movimento, divulgar um lançamento etc.</span>
           <textarea id="q1" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
@@ -81,7 +93,7 @@
 
         <div>
           <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
-            2. Quem você gostaria que chegasse até o seu perfil e se interessasse pelo seu trabalho?
+            2. Quem você gostaria que chegasse até o seu perfil e se interessasse pelo seu trabalho? *
           </label>
           <span class="block text-xs text-brand-brown/60 mb-2">Pode descrever o seu cliente ideal da forma que vier à cabeça.</span>
           <textarea id="q2" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
@@ -94,14 +106,14 @@
         
         <div>
           <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
-            3. Quais produtos, serviços ou assuntos você gostaria que tivessem mais destaque nos seus conteúdos?
+            3. Quais produtos, serviços ou assuntos você gostaria que tivessem mais destaque nos seus conteúdos? *
           </label>
           <textarea id="q3" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
         </div>
 
         <div>
           <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
-            4. Quais são as principais dúvidas, dificuldades ou objeções que você percebe nos seus clientes antes de eles comprarem ou contratarem você?
+            4. Quais são as principais dúvidas, dificuldades ou objeções que você percebe nos seus clientes antes de eles comprarem ou contratarem você? *
           </label>
           <textarea id="q4" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
         </div>
@@ -113,7 +125,7 @@
         
         <div>
           <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
-            5. Quais assuntos você sente que gostaria de falar mais nas redes sociais?
+            5. Quais assuntos você sente que gostaria de falar mais nas redes sociais? *
           </label>
           <span class="block text-xs text-brand-brown/60 mb-2">Aqui vale colocar ideias soltas, perguntas que sempre recebe, assuntos que considera importantes ou até conteúdos que gostaria de fazer.</span>
           <textarea id="q5" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
@@ -121,7 +133,7 @@
 
         <div>
           <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
-            6. Existe algo que você gostaria que as pessoas entendessem sobre o seu trabalho, mas que ainda sente que não consegue comunicar bem nas redes?
+            6. Existe algo que você gostaria que as pessoas entendessem sobre o seu trabalho, mas que ainda sente que não consegue comunicar bem nas redes? *
           </label>
           <textarea id="q6" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
         </div>
@@ -133,7 +145,7 @@
         
         <div>
           <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
-            7. Como você gostaria que as pessoas descrevessem sua marca/perfil depois de consumir seus conteúdos?
+            7. Como você gostaria que as pessoas descrevessem sua marca/perfil depois de consumir seus conteúdos? *
           </label>
           <span class="block text-xs text-brand-brown/60 mb-2">Ex.: profissional, confiável, próxima, sofisticada, divertida, especialista, acessível, moderna etc.</span>
           <input type="text" id="q7" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Ex: Sofisticada, acolhedora e especialista...">
@@ -141,7 +153,7 @@
 
         <div>
           <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
-            8. Existe algum assunto, abordagem ou tipo de conteúdo que você prefere evitar?
+            8. Existe algum assunto, abordagem ou tipo de conteúdo que você prefere evitar? *
           </label>
           <textarea id="q8" rows="2" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
         </div>
@@ -164,7 +176,7 @@
           Avançar
         </button>
         <button type="submit" id="submitBtn" class="hidden ml-auto bg-brand-sand text-brand-brown px-8 py-3 rounded-xl text-sm font-bold hover:brightness-95 transition-all shadow-md">
-          Concluir Briefing
+          Concluir & Enviar no WhatsApp ✨
         </button>
       </div>
     </form>
@@ -174,14 +186,17 @@
       <div class="w-16 h-16 bg-brand-sand/30 text-brand-brown rounded-full flex items-center justify-center mx-auto text-2xl">
         ✨
       </div>
-      <h2 class="font-sora font-extrabold text-2xl text-brand-brown">Tudo pronto! 💛</h2>
+      <h2 class="font-sora font-extrabold text-2xl text-brand-brown">Briefing Concluído! 💛</h2>
       <p class="text-sm text-brand-brown/80 max-w-md mx-auto">
-        Obrigado por compartilhar essas informações com a <strong>vilas.mkt</strong>. Agora já podemos estruturar seu plano de conteúdo com total estratégia!
+        O PDF do seu briefing foi descarregado automaticamente. Clique no botão abaixo para abrir a nossa conversa no WhatsApp e anexe o ficheiro descarregado!
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+        <button onclick="sendWhatsApp()" class="bg-[#25D366] text-white px-6 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[#1DA851] transition-all shadow-md">
+          📲 Abrir WhatsApp da vilas.mkt
+        </button>
         <button onclick="downloadPDF()" class="bg-brand-brown text-brand-offwhite px-6 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:bg-brand-blue transition-all">
-          📄 Baixar PDF do Briefing
+          📄 Descarregar PDF Novamente
         </button>
       </div>
     </div>
@@ -196,6 +211,9 @@
   <script>
     let currentStep = 1;
     const totalSteps = 4;
+
+    // Número do WhatsApp da vilas.mkt (Formato Internacional)
+    const whatsappNumber = "5519999999999"; // SUBSTITUA PELO SEU NÚMERO COM DDD EX: 5519912345678
 
     function nextStep(n) {
       if (n === 1 && !validateForm()) return;
@@ -230,22 +248,32 @@
 
     document.getElementById('briefingForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      downloadPDF();
       document.getElementById('briefingForm').classList.add('hidden');
       document.getElementById('success-screen').classList.remove('hidden');
     });
 
     function downloadPDF() {
+      const clientName = document.getElementById('clientName').value || 'Cliente';
+      const clientBrand = document.getElementById('clientBrand').value || 'Marca';
+
       const element = document.createElement('div');
       element.style.padding = '20px';
       element.style.fontFamily = 'Inter, sans-serif';
       element.style.color = '#281F18';
       
       element.innerHTML = `
-        <div style="border-bottom: 2px solid #D9C6B0; padding-bottom: 10px; margin-bottom: 20px;">
-          <h1 style="font-family: Sora, sans-serif; font-size: 24px; color: #281F18; margin: 0;">vilas.mkt</h1>
-          <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #281F18; margin: 0;">Creative Studio — Briefing de Conteúdo</p>
+        <div style="border-bottom: 2px solid #D9C6B0; padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end;">
+          <div>
+            <h1 style="font-family: Sora, sans-serif; font-size: 24px; color: #281F18; margin: 0;">vilas.mkt</h1>
+            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #281F18; margin: 0;">Creative Studio — Briefing de Conteúdo</p>
+          </div>
+          <div style="text-align: right; font-size: 11px;">
+            <p style="margin: 0;"><strong>Cliente:</strong> ${clientName}</p>
+            <p style="margin: 0;"><strong>Marca:</strong> ${clientBrand}</p>
+          </div>
         </div>
-        <div style="font-size: 12px; line-height: 1.6;">
+        <div style="font-size: 11px; line-height: 1.6;">
           <p><strong>1. Objetivo Principal:</strong><br>${document.getElementById('q1').value}</p>
           <p><strong>2. Cliente Ideal:</strong><br>${document.getElementById('q2').value}</p>
           <p><strong>3. Produtos/Serviços em Destaque:</strong><br>${document.getElementById('q3').value}</p>
@@ -258,11 +286,23 @@
         </div>
       `;
 
+      // Nome do ficheiro em PDF personalizado com a marca do cliente
+      const fileName = `briefing-${clientBrand.toLowerCase().replace(/[^a-z0-9]/g, '-')}.pdf`;
+
       html2pdf().from(element).set({
         margin: 10,
-        filename: 'briefing-vilas-mkt.pdf',
+        filename: fileName,
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
       }).save();
+    }
+
+    function sendWhatsApp() {
+      const clientName = document.getElementById('clientName').value || 'Cliente';
+      const clientBrand = document.getElementById('clientBrand').value || '';
+      
+      const message = `Olá equipe vilas.mkt! 💛%0A%0ASou a(o) *${clientName}* (${clientBrand}). Acabei de preencher o formulário de briefing de conteúdo!%0A%0A📄 O PDF personalizado com as minhas respostas foi descarregado automaticamente. Estou enviando em anexo aqui na conversa!`;
+      const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+      window.open(url, '_blank');
     }
   </script>
 </body>
