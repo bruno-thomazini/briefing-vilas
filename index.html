@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briefing de Início — vilas.mkt</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              brown: '#281F18',
+              blue: '#0E1A2B',
+              sand: '#D9C6B0',
+              gray: '#E8E2DA',
+              offwhite: '#FAF7F2',
+            }
+          },
+          fontFamily: {
+            sora: ['Sora', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand-offwhite text-brand-brown font-inter antialiased min-h-screen flex flex-col justify-between selection:bg-brand-sand selection:text-brand-brown">
+
+  <!-- Header -->
+  <header class="w-full bg-brand-brown text-brand-offwhite py-6 px-6 shadow-md sticky top-0 z-50">
+    <div class="max-w-2xl mx-auto flex justify-between items-center">
+      <div>
+        <h1 class="font-sora font-extrabold text-2xl tracking-tight text-brand-offwhite">vilas.mkt</h1>
+        <p class="text-[10px] uppercase tracking-widest text-brand-sand font-semibold">Creative Studio</p>
+      </div>
+      <span class="text-xs font-sora bg-brand-sand/20 text-brand-sand px-3 py-1 rounded-full border border-brand-sand/30">Briefing de Início</span>
+    </div>
+  </header>
+
+  <!-- Container Principal -->
+  <main class="w-full max-w-2xl mx-auto px-4 py-8 flex-grow">
+    
+    <!-- Intro Box -->
+    <div class="mb-8 text-center bg-white p-6 rounded-2xl border border-brand-gray/60 shadow-sm">
+      <h2 class="font-sora font-bold text-xl text-brand-brown mb-2">Seja bem-vindo(a) ao studio! 💛</h2>
+      <p class="text-sm text-brand-brown/80 leading-relaxed">
+        Vamos alinhar os primeiros passos para estruturar os seus conteúdos. Você nos passa os temas e visões do seu negócio, e a nossa equipa transforma tudo em estratégia e posts impecáveis!
+      </p>
+    </div>
+
+    <!-- Progresso -->
+    <div class="mb-8">
+      <div class="flex justify-between items-center mb-2 text-xs font-semibold uppercase tracking-wider text-brand-brown/60">
+        <span id="step-label">Etapa 1 de 4</span>
+        <span id="step-percent">25%</span>
+      </div>
+      <div class="w-full bg-brand-gray/50 h-2 rounded-full overflow-hidden">
+        <div id="progress-bar" class="bg-brand-sand h-full w-1/4 transition-all duration-300"></div>
+      </div>
+    </div>
+
+    <form id="briefingForm">
+      <!-- ETAPA 1 -->
+      <div id="step-1" class="step-content space-y-6">
+        <h3 class="font-sora font-bold text-lg text-brand-brown border-b border-brand-gray pb-2">1. Objetivo & Público</h3>
+        
+        <div>
+          <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
+            1. Qual é o principal objetivo que você gostaria de alcançar com o seu conteúdo nas redes sociais neste momento?
+          </label>
+          <span class="block text-xs text-brand-brown/60 mb-2">Ex.: atrair novos clientes, fortalecer a marca, apresentar um serviço, gerar mais autoridade, aumentar o movimento, divulgar um lançamento etc.</span>
+          <textarea id="q1" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
+        </div>
+
+        <div>
+          <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
+            2. Quem você gostaria que chegasse até o seu perfil e se interessasse pelo seu trabalho?
+          </label>
+          <span class="block text-xs text-brand-brown/60 mb-2">Pode descrever o seu cliente ideal da forma que vier à cabeça.</span>
+          <textarea id="q2" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
+        </div>
+      </div>
+
+      <!-- ETAPA 2 -->
+      <div id="step-2" class="step-content hidden space-y-6">
+        <h3 class="font-sora font-bold text-lg text-brand-brown border-b border-brand-gray pb-2">2. Destaques & Objeções</h3>
+        
+        <div>
+          <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
+            3. Quais produtos, serviços ou assuntos você gostaria que tivessem mais destaque nos seus conteúdos?
+          </label>
+          <textarea id="q3" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
+        </div>
+
+        <div>
+          <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
+            4. Quais são as principais dúvidas, dificuldades ou objeções que você percebe nos seus clientes antes de eles comprarem ou contratarem você?
+          </label>
+          <textarea id="q4" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
+        </div>
+      </div>
+
+      <!-- ETAPA 3 -->
+      <div id="step-3" class="step-content hidden space-y-6">
+        <h3 class="font-sora font-bold text-lg text-brand-brown border-b border-brand-gray pb-2">3. Ideias & Mensagem</h3>
+        
+        <div>
+          <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
+            5. Quais assuntos você sente que gostaria de falar mais nas redes sociais?
+          </label>
+          <span class="block text-xs text-brand-brown/60 mb-2">Aqui vale colocar ideias soltas, perguntas que sempre recebe, assuntos que considera importantes ou até conteúdos que gostaria de fazer.</span>
+          <textarea id="q5" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
+        </div>
+
+        <div>
+          <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
+            6. Existe algo que você gostaria que as pessoas entendessem sobre o seu trabalho, mas que ainda sente que não consegue comunicar bem nas redes?
+          </label>
+          <textarea id="q6" rows="3" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
+        </div>
+      </div>
+
+      <!-- ETAPA 4 -->
+      <div id="step-4" class="step-content hidden space-y-6">
+        <h3 class="font-sora font-bold text-lg text-brand-brown border-b border-brand-gray pb-2">4. Percepção & Referências</h3>
+        
+        <div>
+          <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
+            7. Como você gostaria que as pessoas descrevessem sua marca/perfil depois de consumir seus conteúdos?
+          </label>
+          <span class="block text-xs text-brand-brown/60 mb-2">Ex.: profissional, confiável, próxima, sofisticada, divertida, especialista, acessível, moderna etc.</span>
+          <input type="text" id="q7" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Ex: Sofisticada, acolhedora e especialista...">
+        </div>
+
+        <div>
+          <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
+            8. Existe algum assunto, abordagem ou tipo de conteúdo que você prefere evitar?
+          </label>
+          <textarea id="q8" rows="2" required class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Digite aqui..."></textarea>
+        </div>
+
+        <div>
+          <label class="block font-sora font-semibold text-sm mb-2 text-brand-brown">
+            9. Tem algum perfil, marca ou conteúdo que você gosta e que pode servir como referência? <span class="text-brand-brown/50 font-normal">(Opcional)</span>
+          </label>
+          <span class="block text-xs text-brand-brown/60 mb-2">Pode enviar links, @s ou simplesmente descrever o que gosta.</span>
+          <textarea id="q9" rows="2" class="w-full p-3 text-sm bg-white border border-brand-gray rounded-xl focus:ring-2 focus:ring-brand-sand focus:outline-none transition-all" placeholder="Ex: @perfil_exemplo, links..."></textarea>
+        </div>
+      </div>
+
+      <!-- Botões de Navegação -->
+      <div class="mt-8 flex justify-between gap-4">
+        <button type="button" id="prevBtn" onclick="nextStep(-1)" class="hidden px-6 py-3 rounded-xl border border-brand-brown text-brand-brown text-sm font-semibold hover:bg-brand-gray/30 transition-all">
+          Voltar
+        </button>
+        <button type="button" id="nextBtn" onclick="nextStep(1)" class="ml-auto bg-brand-brown text-brand-offwhite px-8 py-3 rounded-xl text-sm font-semibold hover:bg-brand-blue transition-all shadow-md">
+          Avançar
+        </button>
+        <button type="submit" id="submitBtn" class="hidden ml-auto bg-brand-sand text-brand-brown px-8 py-3 rounded-xl text-sm font-bold hover:brightness-95 transition-all shadow-md">
+          Concluir Briefing
+        </button>
+      </div>
+    </form>
+
+    <!-- TELA DE SUCESSO -->
+    <div id="success-screen" class="hidden text-center py-8 bg-white p-8 rounded-2xl border border-brand-gray shadow-sm space-y-6">
+      <div class="w-16 h-16 bg-brand-sand/30 text-brand-brown rounded-full flex items-center justify-center mx-auto text-2xl">
+        ✨
+      </div>
+      <h2 class="font-sora font-extrabold text-2xl text-brand-brown">Tudo pronto! 💛</h2>
+      <p class="text-sm text-brand-brown/80 max-w-md mx-auto">
+        Obrigado por compartilhar essas informações com a <strong>vilas.mkt</strong>. Agora já podemos estruturar seu plano de conteúdo com total estratégia!
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+        <button onclick="downloadPDF()" class="bg-brand-brown text-brand-offwhite px-6 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:bg-brand-blue transition-all">
+          📄 Baixar PDF do Briefing
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="w-full text-center py-6 text-xs text-brand-brown/50 border-t border-brand-gray mt-8">
+    <p>© vilas.mkt — Creative Studio</p>
+    <p class="text-[10px] text-brand-brown/40 mt-1">Marcas fortes nascem de boas conexões.</p>
+  </footer>
+
+  <script>
+    let currentStep = 1;
+    const totalSteps = 4;
+
+    function nextStep(n) {
+      if (n === 1 && !validateForm()) return;
+      
+      document.getElementById(`step-${currentStep}`).classList.add('hidden');
+      currentStep += n;
+      document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+
+      const percent = (currentStep / totalSteps) * 100;
+      document.getElementById('progress-bar').style.width = `${percent}%`;
+      document.getElementById('step-percent').innerText = `${percent}%`;
+      document.getElementById('step-label').innerText = `Etapa ${currentStep} de ${totalSteps}`;
+
+      document.getElementById('prevBtn').classList.toggle('hidden', currentStep === 1);
+      document.getElementById('nextBtn').classList.toggle('hidden', currentStep === totalSteps);
+      document.getElementById('submitBtn').classList.toggle('hidden', currentStep !== totalSteps);
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function validateForm() {
+      const currentInputs = document.querySelectorAll(`#step-${currentStep} [required]`);
+      for (let input of currentInputs) {
+        if (!input.value.trim()) {
+          alert('Por favor, preencha todos os campos obrigatórios antes de continuar.');
+          input.focus();
+          return false;
+        }
+      }
+      return true;
+    }
+
+    document.getElementById('briefingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('briefingForm').classList.add('hidden');
+      document.getElementById('success-screen').classList.remove('hidden');
+    });
+
+    function downloadPDF() {
+      const element = document.createElement('div');
+      element.style.padding = '20px';
+      element.style.fontFamily = 'Inter, sans-serif';
+      element.style.color = '#281F18';
+      
+      element.innerHTML = `
+        <div style="border-bottom: 2px solid #D9C6B0; padding-bottom: 10px; margin-bottom: 20px;">
+          <h1 style="font-family: Sora, sans-serif; font-size: 24px; color: #281F18; margin: 0;">vilas.mkt</h1>
+          <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #281F18; margin: 0;">Creative Studio — Briefing de Conteúdo</p>
+        </div>
+        <div style="font-size: 12px; line-height: 1.6;">
+          <p><strong>1. Objetivo Principal:</strong><br>${document.getElementById('q1').value}</p>
+          <p><strong>2. Cliente Ideal:</strong><br>${document.getElementById('q2').value}</p>
+          <p><strong>3. Produtos/Serviços em Destaque:</strong><br>${document.getElementById('q3').value}</p>
+          <p><strong>4. Objeções/Dúvidas de Clientes:</strong><br>${document.getElementById('q4').value}</p>
+          <p><strong>5. Assuntos que gostaria de falar mais:</strong><br>${document.getElementById('q5').value}</p>
+          <p><strong>6. O que precisa ser melhor comunicado:</strong><br>${document.getElementById('q6').value}</p>
+          <p><strong>7. Como deseja ser percebido(a):</strong><br>${document.getElementById('q7').value}</p>
+          <p><strong>8. O que evitar:</strong><br>${document.getElementById('q8').value}</p>
+          <p><strong>9. Referências:</strong><br>${document.getElementById('q9').value || 'Nenhuma informada'}</p>
+        </div>
+      `;
+
+      html2pdf().from(element).set({
+        margin: 10,
+        filename: 'briefing-vilas-mkt.pdf',
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      }).save();
+    }
+  </script>
+</body>
+</html>
