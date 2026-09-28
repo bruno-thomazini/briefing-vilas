@@ -30,44 +30,6 @@
       }
     }
   </script>
-  <style>
-    /* Estilos exclusivos para rendering HD do PDF */
-    .pdf-container {
-      font-family: 'Inter', sans-serif;
-      color: #281F18;
-      background-color: #FAF7F2;
-      padding: 0;
-      width: 794px; /* Largura A4 padrão em px para 96DPI */
-      box-sizing: border-box;
-    }
-    .pdf-header {
-      background-color: #281F18;
-      color: #FAF7F2;
-      padding: 28px 32px;
-      border-bottom: 4px solid #D9C6B0;
-    }
-    .pdf-card {
-      background-color: #FFFFFF;
-      border: 1px solid #E8E2DA;
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-bottom: 14px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-    }
-    .pdf-q-title {
-      font-family: 'Sora', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      color: #281F18;
-      margin-bottom: 6px;
-    }
-    .pdf-q-answer {
-      font-size: 11px;
-      color: #4A3E35;
-      line-height: 1.5;
-      white-space: pre-wrap;
-    }
-  </style>
 </head>
 <body class="bg-brand-offwhite text-brand-brown font-inter antialiased min-h-screen flex flex-col justify-between selection:bg-brand-sand selection:text-brand-brown">
 
@@ -213,8 +175,8 @@
         <button type="button" id="nextBtn" onclick="nextStep(1)" class="ml-auto bg-brand-brown text-brand-offwhite px-8 py-3 rounded-xl text-sm font-semibold hover:bg-brand-blue transition-all shadow-md">
           Avançar
         </button>
-        <button type="submit" id="submitBtn" class="hidden ml-auto bg-brand-sand text-brand-brown px-8 py-3 rounded-xl text-sm font-bold hover:brightness-95 transition-all shadow-md">
-          Concluir & Enviar no WhatsApp ✨
+        <button type="submit" id="submitBtn" class="hidden ml-auto bg-[#25D366] text-white px-8 py-3 rounded-xl text-sm font-bold hover:bg-[#1DA851] transition-all shadow-md flex items-center gap-2">
+          📲 Enviar Respostas no WhatsApp ✨
         </button>
       </div>
     </form>
@@ -224,17 +186,14 @@
       <div class="w-16 h-16 bg-brand-sand/30 text-brand-brown rounded-full flex items-center justify-center mx-auto text-2xl">
         ✨
       </div>
-      <h2 class="font-sora font-extrabold text-2xl text-brand-brown">Briefing Concluído! 💛</h2>
+      <h2 class="font-sora font-extrabold text-2xl text-brand-brown">Briefing Enviado! 💛</h2>
       <p class="text-sm text-brand-brown/80 max-w-md mx-auto">
-        O PDF de alta definição do seu briefing foi descarregado automaticamente. Clique no botão abaixo para abrir a nossa conversa no WhatsApp e anexe o ficheiro!
+        O seu WhatsApp foi aberto com todas as respostas organizadas! Se a janela não tiver aberto automaticamente, clique no botão abaixo para enviar.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
         <button onclick="sendWhatsApp()" class="bg-[#25D366] text-white px-6 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[#1DA851] transition-all shadow-md">
-          📲 Abrir WhatsApp da vilas.mkt
-        </button>
-        <button onclick="downloadPDF()" class="bg-brand-brown text-brand-offwhite px-6 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:bg-brand-blue transition-all">
-          📄 Descarregar PDF Novamente
+          📲 Reabrir WhatsApp
         </button>
       </div>
     </div>
@@ -286,119 +245,63 @@
 
     document.getElementById('briefingForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      downloadPDF();
+      sendWhatsApp();
       document.getElementById('briefingForm').classList.add('hidden');
       document.getElementById('success-screen').classList.remove('hidden');
     });
 
-    function downloadPDF() {
-      const clientName = document.getElementById('clientName').value || 'Cliente';
-      const clientBrand = document.getElementById('clientBrand').value || 'Marca';
-      const todayDate = new Date().toLocaleDateString('pt-BR');
-
-      // Elemento estilizado idêntico à marca vilas.mkt para exportação
-      const element = document.createElement('div');
-      element.className = 'pdf-container';
-      
-      element.innerHTML = `
-        <div class="pdf-header">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <h1 style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 26px; margin: 0; letter-spacing: -0.5px; color: #FAF7F2;">vilas.mkt</h1>
-              <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px; color: #D9C6B0; margin-top: 2px; font-weight: 600;">CREATIVE STUDIO</p>
-            </div>
-            <div style="text-align: right; background-color: rgba(217, 198, 176, 0.15); border: 1px solid rgba(217, 198, 176, 0.3); padding: 8px 14px; border-radius: 8px;">
-              <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #D9C6B0; margin: 0; font-weight: 600;">BRIEFING DE CONTEÚDO</p>
-              <p style="font-size: 10px; color: #FAF7F2; margin: 2px 0 0 0;">${todayDate}</p>
-            </div>
-          </div>
-          
-          <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(232, 226, 218, 0.2); display: flex; gap: 24px; font-size: 11px;">
-            <div><span style="color: #D9C6B0; font-weight: 600;">Cliente:</span> <strong style="color: #FAF7F2;">${clientName}</strong></div>
-            <div><span style="color: #D9C6B0; font-weight: 600;">Marca / Perfil:</span> <strong style="color: #FAF7F2;">${clientBrand}</strong></div>
-          </div>
-        </div>
-
-        <div style="padding: 24px 32px; background-color: #FAF7F2;">
-          
-          <div class="pdf-card">
-            <div class="pdf-q-title">1. Objetivo Principal no Conteúdo</div>
-            <div class="pdf-q-answer">${document.getElementById('q1').value}</div>
-          </div>
-
-          <div class="pdf-card">
-            <div class="pdf-q-title">2. Cliente Ideal / Perfil Desejado</div>
-            <div class="pdf-q-answer">${document.getElementById('q2').value}</div>
-          </div>
-
-          <div class="pdf-card">
-            <div class="pdf-q-title">3. Produtos, Serviços ou Assuntos em Destaque</div>
-            <div class="pdf-q-answer">${document.getElementById('q3').value}</div>
-          </div>
-
-          <div class="pdf-card">
-            <div class="pdf-q-title">4. Dúvidas, Dificuldades e Objeções dos Clientes</div>
-            <div class="pdf-q-answer">${document.getElementById('q4').value}</div>
-          </div>
-
-          <div class="pdf-card">
-            <div class="pdf-q-title">5. Assuntos que Deseja Falar Mais / Ideias Soltas</div>
-            <div class="pdf-q-answer">${document.getElementById('q5').value}</div>
-          </div>
-
-          <div class="pdf-card">
-            <div class="pdf-q-title">6. O que Precisa ser Melhor Comunicado</div>
-            <div class="pdf-q-answer">${document.getElementById('q6').value}</div>
-          </div>
-
-          <div class="pdf-card">
-            <div class="pdf-q-title">7. Percepção Desejada para a Marca</div>
-            <div class="pdf-q-answer">${document.getElementById('q7').value}</div>
-          </div>
-
-          <div class="pdf-card">
-            <div class="pdf-q-title">8. Assuntos ou Abordagens a Evitar</div>
-            <div class="pdf-q-answer">${document.getElementById('q8').value}</div>
-          </div>
-
-          <div class="pdf-card">
-            <div class="pdf-q-title">9. Referências de Perfis / Marcas</div>
-            <div class="pdf-q-answer">${document.getElementById('q9').value || 'Nenhuma referência informada.'}</div>
-          </div>
-
-          <div style="margin-top: 24px; text-align: center; border-top: 1px solid #E8E2DA; padding-top: 16px; font-size: 10px; color: #8A7B70;">
-            <p style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 600; color: #281F18;">vilas.mkt — Creative Studio</p>
-            <p style="margin: 2px 0 0 0;">Marcas fortes nascem de boas conexões.</p>
-          </div>
-
-        </div>
-      `;
-
-      const fileName = `briefing-${clientBrand.toLowerCase().replace(/[^a-z0-9]/g, '-')}.pdf`;
-
-      // Configuração para renderização vetorial em alta resolução (300 DPI)
-      const opt = {
-        margin:       0,
-        filename:     fileName,
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { 
-          scale: 3, // Multiplica a resolução por 3x para nitidez total
-          useCORS: true,
-          logging: false,
-          letterRendering: true
-        },
-        jsPDF:        { unit: 'pt', format: 'a4', orientation: 'portrait' }
-      };
-
-      html2pdf().set(opt).from(element).save();
-    }
-
     function sendWhatsApp() {
-      const clientName = document.getElementById('clientName').value || 'Cliente';
-      const clientBrand = document.getElementById('clientBrand').value || '';
-      
-      const message = `Olá equipe vilas.mkt! 💛%0A%0ASou a(o) *${clientName}* (${clientBrand}). Acabei de preencher o formulário de briefing de conteúdo!%0A%0A📄 O PDF em alta resolução com as minhas respostas foi descarregado automaticamente. Estou enviando em anexo aqui na conversa!`;
-      const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+      const clientName = document.getElementById('clientName').value || 'Não informado';
+      const clientBrand = document.getElementById('clientBrand').value || 'Não informado';
+
+      const q1 = document.getElementById('q1').value;
+      const q2 = document.getElementById('q2').value;
+      const q3 = document.getElementById('q3').value;
+      const q4 = document.getElementById('q4').value;
+      const q5 = document.getElementById('q5').value;
+      const q6 = document.getElementById('q6').value;
+      const q7 = document.getElementById('q7').value;
+      const q8 = document.getElementById('q8').value;
+      const q9 = document.getElementById('q9').value || 'Nenhuma';
+
+      const textMessage = 
+`*BRIEFING DE CONTEÚDO — vilas.mkt* 💛
+
+👤 *Cliente:* ${clientName}
+🏷️ *Marca:* ${clientBrand}
+
+----------------------------------
+*1. Objetivo Principal:*
+${q1}
+
+*2. Cliente Ideal:*
+${q2}
+
+*3. Destaques (Produtos/Serviços):*
+${q3}
+
+*4. Dúvidas/Objeções dos Clientes:*
+${q4}
+
+*5. Assuntos que quer falar mais:*
+${q5}
+
+*6. O que precisa ser melhor comunicado:*
+${q6}
+
+*7. Percepção Desejada:*
+${q7}
+
+*8. Assuntos a Evitar:*
+${q8}
+
+*9. Referências:*
+${q9}
+----------------------------------
+_Enviado pelo formulário oficial da vilas.mkt_`;
+
+      const encodedMessage = encodeURIComponent(textMessage);
+      const url = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
       window.open(url, '_blank');
     }
   </script>
