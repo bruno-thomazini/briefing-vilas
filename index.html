@@ -8,7 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -30,10 +30,48 @@
       }
     }
   </script>
+  <style>
+    /* Estilos exclusivos para rendering HD do PDF */
+    .pdf-container {
+      font-family: 'Inter', sans-serif;
+      color: #281F18;
+      background-color: #FAF7F2;
+      padding: 0;
+      width: 794px; /* Largura A4 padrão em px para 96DPI */
+      box-sizing: border-box;
+    }
+    .pdf-header {
+      background-color: #281F18;
+      color: #FAF7F2;
+      padding: 28px 32px;
+      border-bottom: 4px solid #D9C6B0;
+    }
+    .pdf-card {
+      background-color: #FFFFFF;
+      border: 1px solid #E8E2DA;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .pdf-q-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #281F18;
+      margin-bottom: 6px;
+    }
+    .pdf-q-answer {
+      font-size: 11px;
+      color: #4A3E35;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+  </style>
 </head>
 <body class="bg-brand-offwhite text-brand-brown font-inter antialiased min-h-screen flex flex-col justify-between selection:bg-brand-sand selection:text-brand-brown">
 
-  <!-- Header -->
+  <!-- Header Web -->
   <header class="w-full bg-brand-brown text-brand-offwhite py-6 px-6 shadow-md sticky top-0 z-50">
     <div class="max-w-2xl mx-auto flex justify-between items-center">
       <div>
@@ -188,7 +226,7 @@
       </div>
       <h2 class="font-sora font-extrabold text-2xl text-brand-brown">Briefing Concluído! 💛</h2>
       <p class="text-sm text-brand-brown/80 max-w-md mx-auto">
-        O PDF do seu briefing foi descarregado automaticamente. Clique no botão abaixo para abrir a nossa conversa no WhatsApp e anexe o ficheiro descarregado!
+        O PDF de alta definição do seu briefing foi descarregado automaticamente. Clique no botão abaixo para abrir a nossa conversa no WhatsApp e anexe o ficheiro!
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
@@ -256,50 +294,110 @@
     function downloadPDF() {
       const clientName = document.getElementById('clientName').value || 'Cliente';
       const clientBrand = document.getElementById('clientBrand').value || 'Marca';
+      const todayDate = new Date().toLocaleDateString('pt-BR');
 
+      // Elemento estilizado idêntico à marca vilas.mkt para exportação
       const element = document.createElement('div');
-      element.style.padding = '20px';
-      element.style.fontFamily = 'Inter, sans-serif';
-      element.style.color = '#281F18';
+      element.className = 'pdf-container';
       
       element.innerHTML = `
-        <div style="border-bottom: 2px solid #D9C6B0; padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end;">
-          <div>
-            <h1 style="font-family: Sora, sans-serif; font-size: 24px; color: #281F18; margin: 0;">vilas.mkt</h1>
-            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #281F18; margin: 0;">Creative Studio — Briefing de Conteúdo</p>
+        <div class="pdf-header">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h1 style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 26px; margin: 0; letter-spacing: -0.5px; color: #FAF7F2;">vilas.mkt</h1>
+              <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px; color: #D9C6B0; margin-top: 2px; font-weight: 600;">CREATIVE STUDIO</p>
+            </div>
+            <div style="text-align: right; background-color: rgba(217, 198, 176, 0.15); border: 1px solid rgba(217, 198, 176, 0.3); padding: 8px 14px; border-radius: 8px;">
+              <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #D9C6B0; margin: 0; font-weight: 600;">BRIEFING DE CONTEÚDO</p>
+              <p style="font-size: 10px; color: #FAF7F2; margin: 2px 0 0 0;">${todayDate}</p>
+            </div>
           </div>
-          <div style="text-align: right; font-size: 11px;">
-            <p style="margin: 0;"><strong>Cliente:</strong> ${clientName}</p>
-            <p style="margin: 0;"><strong>Marca:</strong> ${clientBrand}</p>
+          
+          <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(232, 226, 218, 0.2); display: flex; gap: 24px; font-size: 11px;">
+            <div><span style="color: #D9C6B0; font-weight: 600;">Cliente:</span> <strong style="color: #FAF7F2;">${clientName}</strong></div>
+            <div><span style="color: #D9C6B0; font-weight: 600;">Marca / Perfil:</span> <strong style="color: #FAF7F2;">${clientBrand}</strong></div>
           </div>
         </div>
-        <div style="font-size: 11px; line-height: 1.6;">
-          <p><strong>1. Objetivo Principal:</strong><br>${document.getElementById('q1').value}</p>
-          <p><strong>2. Cliente Ideal:</strong><br>${document.getElementById('q2').value}</p>
-          <p><strong>3. Produtos/Serviços em Destaque:</strong><br>${document.getElementById('q3').value}</p>
-          <p><strong>4. Objeções/Dúvidas de Clientes:</strong><br>${document.getElementById('q4').value}</p>
-          <p><strong>5. Assuntos que gostaria de falar mais:</strong><br>${document.getElementById('q5').value}</p>
-          <p><strong>6. O que precisa ser melhor comunicado:</strong><br>${document.getElementById('q6').value}</p>
-          <p><strong>7. Como deseja ser percebido(a):</strong><br>${document.getElementById('q7').value}</p>
-          <p><strong>8. O que evitar:</strong><br>${document.getElementById('q8').value}</p>
-          <p><strong>9. Referências:</strong><br>${document.getElementById('q9').value || 'Nenhuma informada'}</p>
+
+        <div style="padding: 24px 32px; background-color: #FAF7F2;">
+          
+          <div class="pdf-card">
+            <div class="pdf-q-title">1. Objetivo Principal no Conteúdo</div>
+            <div class="pdf-q-answer">${document.getElementById('q1').value}</div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-q-title">2. Cliente Ideal / Perfil Desejado</div>
+            <div class="pdf-q-answer">${document.getElementById('q2').value}</div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-q-title">3. Produtos, Serviços ou Assuntos em Destaque</div>
+            <div class="pdf-q-answer">${document.getElementById('q3').value}</div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-q-title">4. Dúvidas, Dificuldades e Objeções dos Clientes</div>
+            <div class="pdf-q-answer">${document.getElementById('q4').value}</div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-q-title">5. Assuntos que Deseja Falar Mais / Ideias Soltas</div>
+            <div class="pdf-q-answer">${document.getElementById('q5').value}</div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-q-title">6. O que Precisa ser Melhor Comunicado</div>
+            <div class="pdf-q-answer">${document.getElementById('q6').value}</div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-q-title">7. Percepção Desejada para a Marca</div>
+            <div class="pdf-q-answer">${document.getElementById('q7').value}</div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-q-title">8. Assuntos ou Abordagens a Evitar</div>
+            <div class="pdf-q-answer">${document.getElementById('q8').value}</div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-q-title">9. Referências de Perfis / Marcas</div>
+            <div class="pdf-q-answer">${document.getElementById('q9').value || 'Nenhuma referência informada.'}</div>
+          </div>
+
+          <div style="margin-top: 24px; text-align: center; border-top: 1px solid #E8E2DA; padding-top: 16px; font-size: 10px; color: #8A7B70;">
+            <p style="margin: 0; font-family: 'Sora', sans-serif; font-weight: 600; color: #281F18;">vilas.mkt — Creative Studio</p>
+            <p style="margin: 2px 0 0 0;">Marcas fortes nascem de boas conexões.</p>
+          </div>
+
         </div>
       `;
 
       const fileName = `briefing-${clientBrand.toLowerCase().replace(/[^a-z0-9]/g, '-')}.pdf`;
 
-      html2pdf().from(element).set({
-        margin: 10,
-        filename: fileName,
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-      }).save();
+      // Configuração para renderização vetorial em alta resolução (300 DPI)
+      const opt = {
+        margin:       0,
+        filename:     fileName,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { 
+          scale: 3, // Multiplica a resolução por 3x para nitidez total
+          useCORS: true,
+          logging: false,
+          letterRendering: true
+        },
+        jsPDF:        { unit: 'pt', format: 'a4', orientation: 'portrait' }
+      };
+
+      html2pdf().set(opt).from(element).save();
     }
 
     function sendWhatsApp() {
       const clientName = document.getElementById('clientName').value || 'Cliente';
       const clientBrand = document.getElementById('clientBrand').value || '';
       
-      const message = `Olá equipe vilas.mkt! 💛%0A%0ASou a(o) *${clientName}* (${clientBrand}). Acabei de preencher o formulário de briefing de conteúdo!%0A%0A📄 O PDF personalizado com as minhas respostas foi descarregado automaticamente. Estou enviando em anexo aqui na conversa!`;
+      const message = `Olá equipe vilas.mkt! 💛%0A%0ASou a(o) *${clientName}* (${clientBrand}). Acabei de preencher o formulário de briefing de conteúdo!%0A%0A📄 O PDF em alta resolução com as minhas respostas foi descarregado automaticamente. Estou enviando em anexo aqui na conversa!`;
       const url = `https://wa.me/${whatsappNumber}?text=${message}`;
       window.open(url, '_blank');
     }
