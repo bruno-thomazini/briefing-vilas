@@ -175,7 +175,7 @@
           Avançar
         </button>
         <button type="submit" id="submitBtn" class="hidden ml-auto bg-[#25D366] text-white px-8 py-3 rounded-xl text-sm font-bold hover:bg-[#1DA851] transition-all shadow-md flex items-center gap-2">
-          📲 Enviar Respostas no WhatsApp ✨
+          Enviar Respostas no WhatsApp
         </button>
       </div>
     </form>
@@ -192,7 +192,7 @@
 
       <div class="flex justify-center pt-4">
         <button onclick="sendWhatsApp()" class="bg-[#25D366] text-white px-8 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[#1DA851] transition-all shadow-md">
-          📲 Reabrir WhatsApp da vilas.mkt
+          Reabrir WhatsApp da vilas.mkt
         </button>
       </div>
     </div>
@@ -221,7 +221,7 @@
       const percent = (currentStep / totalSteps) * 100;
       document.getElementById('progress-bar').style.width = `${percent}%`;
       document.getElementById('step-percent').innerText = `${percent}%`;
-      document.getElementById('step-label').innerText = `Etapa ${currentStep} de ${totalSteps}`;
+      document.getElementById('step-label').innerText = `Etapa ${currentStep} de${totalSteps}`;
 
       document.getElementById('prevBtn').classList.toggle('hidden', currentStep === 1);
       document.getElementById('nextBtn').classList.toggle('hidden', currentStep === totalSteps);
@@ -250,57 +250,62 @@
     });
 
     function sendWhatsApp() {
-      const clientName = document.getElementById('clientName').value || 'Não informado';
-      const clientBrand = document.getElementById('clientBrand').value || 'Não informado';
+      const clientName = document.getElementById('clientName').value.trim() || 'Não informado';
+      const clientBrand = document.getElementById('clientBrand').value.trim() || 'Não informado';
 
-      const q1 = document.getElementById('q1').value;
-      const q2 = document.getElementById('q2').value;
-      const q3 = document.getElementById('q3').value;
-      const q4 = document.getElementById('q4').value;
-      const q5 = document.getElementById('q5').value;
-      const q6 = document.getElementById('q6').value;
-      const q7 = document.getElementById('q7').value;
-      const q8 = document.getElementById('q8').value;
-      const q9 = document.getElementById('q9').value || 'Nenhuma';
+      const q1 = document.getElementById('q1').value.trim();
+      const q2 = document.getElementById('q2').value.trim();
+      const q3 = document.getElementById('q3').value.trim();
+      const q4 = document.getElementById('q4').value.trim();
+      const q5 = document.getElementById('q5').value.trim();
+      const q6 = document.getElementById('q6').value.trim();
+      const q7 = document.getElementById('q7').value.trim();
+      const q8 = document.getElementById('q8').value.trim();
+      const q9 = document.getElementById('q9').value.trim() || 'Nenhuma';
 
-      const textMessage = 
-`*BRIEFING DE CONTEÚDO — vilas.mkt* 💛
+      // Mensagem limpa, elegante e sem caracteres que quebram no WhatsApp
+      const lines = [
+        `*BRIEFING DE CONTEUDO — vilas.mkt*`,
+        ``,
+        `*Cliente:* ${clientName}`,
+        `*Marca:* ${clientBrand}`,
+        `____________________________________`,
+        ``,
+        `*1. Objetivo Principal:*`,
+        `${q1}`,
+        ``,
+        `*2. Cliente Ideal:*`,
+        `${q2}`,
+        ``,
+        `*3. Produtos / Servicos em Destaque:*`,
+        `${q3}`,
+        ``,
+        `*4. Duvidas e Objecoes dos Clientes:*`,
+        `${q4}`,
+        ``,
+        `*5. Assuntos que Quer Falar Mais:*`,
+        `${q5}`,
+        ``,
+        `*6. O que Precisa ser Melhor Comunicado:*`,
+        `${q6}`,
+        ``,
+        `*7. Percepcao Desejada:*`,
+        `${q7}`,
+        ``,
+        `*8. Assuntos a Evitar:*`,
+        `${q8}`,
+        ``,
+        `*9. Referencias:*`,
+        `${q9}`,
+        `____________________________________`,
+        ``,
+        `_Enviado via vilas.mkt Creative Studio_`
+      ];
 
-👤 *Cliente:* ${clientName}
-🏷️ *Marca:* ${clientBrand}
-
-----------------------------------
-1️⃣ *Objetivo Principal:*
-${q1}
-
-2️⃣ *Cliente Ideal:*
-${q2}
-
-3️⃣ *Destaques (Produtos/Serviços):*
-${q3}
-
-4️⃣ *Dúvidas/Objeções dos Clientes:*
-${q4}
-
-5️⃣ *Assuntos que quer falar mais:*
-${q5}
-
-6️⃣ *O que precisa ser melhor comunicado:*
-${q6}
-
-7️⃣ *Percepção Desejada:*
-${q7}
-
-8️⃣ *Assuntos a Evitar:*
-${q8}
-
-9️⃣ *Referências:*
-${q9}
-----------------------------------
-_Enviado pelo formulário oficial da vilas.mkt_`;
-
-      const encodedMessage = encodeURIComponent(textMessage);
-      const url = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+      const fullText = lines.join('\n');
+      const encodedMessage = encodeURIComponent(fullText);
+      const url = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+      
       window.open(url, '_blank');
     }
   </script>
